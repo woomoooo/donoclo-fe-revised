@@ -1,6 +1,6 @@
 import "../styles/splashPage.scss";
 import LogoIcon from '../assets/svgs/icon-logo.svg';
-import Bbom from '../assets/pngs/img-splash-bbom.png';
+import Bbom from '../assets/pngs/splash-bbom.png';
 import Content from '../assets/svgs/icon-splash-content.svg';
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";

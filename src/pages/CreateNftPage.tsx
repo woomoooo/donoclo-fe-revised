@@ -2,8 +2,8 @@ import '../styles/createNftPage.scss';
 import Credit from '../assets/svgs/icon-credit.svg'
 import Camera from '../assets/svgs/icon-camera.svg';
 import Gallery from '../assets/svgs/icon-gallery.svg';
-import Deco1 from '../assets/svgs/img-create-deco1.svg';
-import Deco2 from '../assets/svgs/img-create-deco2.svg';
+import Deco1 from '../assets/svgs/create-deco1.svg';
+import Deco2 from '../assets/svgs/create-deco2.svg';
 import Model from '../assets/pngs/model-dummy.png';
 
 const CreateNftPage = () => {

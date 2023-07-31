@@ -1,7 +1,7 @@
 import '../styles/inventoryPage.scss';
 import Back from '../assets/svgs/icon-back.svg';
 import Edit from '../assets/svgs/icon-edit.svg';
-import Bbom from "../assets/pngs/img-home-bbom.png";
+import Bbom from "../assets/pngs/home-bbom.png";
 import Capture from "../assets/svgs/icon-capture.svg";
 
 const InventoryPage = () => {

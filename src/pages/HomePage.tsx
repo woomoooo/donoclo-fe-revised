@@ -3,7 +3,7 @@ import Logo from '../assets/svgs/icon-logo-black.svg';
 import NftBackground from '../assets/svgs/home-nft-bg.svg';
 import BookBackground from '../assets/svgs/home-book-bg.svg';
 import MyPage from '../assets/svgs/icon-mypage.svg';
-import Bbom from '../assets/pngs/img-home-bbom.png';
+import Bbom from '../assets/pngs/home-bbom.png';
 import Capture from '../assets/svgs/icon-capture.svg';
 
 const HomePage = () => {

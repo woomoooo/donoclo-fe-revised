@@ -1,6 +1,7 @@
 @import url('https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet');
 @import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Notable&display=swap');
 
 @font-face {
     font-family: 'SUIT', sans-serif;
@@ -26,6 +27,13 @@
 @font-face {
     font-family: 'Cafe24Ssurround';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Notable', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Notable&display=swap') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
