@@ -28,7 +28,7 @@
       flex-direction: column;
       align-items: flex-start;
       margin-bottom: 12px;
-
+      color: white;
 
       .form-input {
         box-sizing: border-box;
@@ -48,6 +48,7 @@
           flex: 1;
           outline: none;
           background-color: transparent;
+          color: white;
         }
 
         .error-icon {
