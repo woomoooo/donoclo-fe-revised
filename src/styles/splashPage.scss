@@ -1,0 +1,57 @@
+
+.splash {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../assets/pngs/img-splash-bg.png');
+  background-size: cover;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+
+  .logo {
+    margin-top: 100px;
+  }
+
+  .bbom {
+    position: absolute;
+    width: 128%;
+    bottom: 0;
+    z-index: 0;
+  }
+
+  .splash-content {
+    position: absolute;
+    z-index: 100;
+    bottom: 40px;
+    left: 40px;
+  }
+
+  .signin {
+    box-sizing: border-box;
+    width: calc(100% - 40px);
+    background-color: #FFEB3B;
+    padding: 16px 18px;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 160px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .signup {
+    width: calc(100% - 60px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 128px;
+    color: white;
+    font-size: 14px;
+
+    .clickable {
+      color: #FFEB3B;
+    }
+  }
+}

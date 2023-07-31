@@ -1,0 +1,85 @@
+
+.home {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .home-top {
+    box-sizing: border-box;
+    margin-top: 40px;
+    width: 100%;
+    padding: 0 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      width: 32%;
+    }
+
+    .my-page {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .home-bbom {
+    box-sizing: border-box;
+    width: calc(100% - 36px);
+    background-image: url('../assets/pngs/img-home-card-bg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 12px;
+    position: relative;
+
+    .bbom {
+      width: 100%;
+    }
+
+    .capture {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: white;
+    }
+
+  }
+  .home-menu {
+    width: calc(100% - 36px);
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    .menu-card {
+      width: 50%;
+      .nft-bg {
+        width: 100%;
+        height: 100%;
+        margin-top: -20px;
+      }
+      .book-bg {
+        margin-top: 8px;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .about {
+    box-sizing: border-box;
+    width: calc(100% - 36px);
+    padding: 16px 18px;
+    border-radius: 8px;
+    margin-top: 20px;
+    background-color: black;
+    color: white;
+    font-family: 'Zen Dots', cursive;
+    font-size: 0.8rem;
+    text-align: center ;
+  }
+}

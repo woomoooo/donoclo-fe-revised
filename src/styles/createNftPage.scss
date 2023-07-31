@@ -1,0 +1,171 @@
+
+.create {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  padding: 0 18px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .create-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+
+    .title-create {
+      font-family: 'Montserrat Alternates', sans-serif;
+    }
+
+    .title-nft {
+      font-family: 'Zen Dots', cursive;
+    }
+  }
+
+  .masked-div {
+    height: 100%;
+    margin-top: -60px;
+    mask-image: url('../assets/svgs/create-mask.svg');
+    mask-repeat: no-repeat;
+    //mask-position: center;
+    mask-size: cover;
+    background-color: black;
+    position: relative;
+    border-top-right-radius: 44px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+
+    .nft-container {
+      width: 100%;
+      height: 100%;
+
+      .credit {
+        position: absolute;
+        top: 12px;
+        right: 0;
+        width: 120px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .credit-num {
+          font-family: 'Cafe24Ssurround';
+          color: white;
+        }
+      }
+
+      .upload-menu {
+        box-sizing: border-box;
+        position: absolute;
+        width: 80px;
+        height: 44px;
+        top: 60px;
+        border-bottom-left-radius: 22px;
+        border-top-left-radius: 22px;
+        right: 0;
+        background-color: #131BDE;
+        z-index: 100;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-left: 12px;
+      }
+
+      .upload-container {
+        width: 100%;
+        height: calc(100vh - 128px);
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+
+        .upload {
+          width: calc(100vw - 80px);
+          height: calc(100vw - 80px);
+
+          margin: 12px auto;
+          border-radius: 8px;
+          background-color: white;
+          display: flex;
+          align-items: center;
+          font-family: 'Montserrat Alternates', sans-serif;
+          font-size: 14px;
+          text-align: center;
+          justify-content: center;
+        }
+
+        .after-uploaded {
+          width: 100%;
+          height: calc(100vw - 40px);
+          aspect-ratio: 1/1;
+          position: relative;
+          overflow: hidden;
+
+          .generated-message {
+            color: white;
+            font-family: 'Zen Dots', cursive;
+            margin-left: 20px;
+          }
+
+          .deco1 {
+            position: absolute;
+            width: 100%;
+            bottom: -40px;
+            left: -40px;
+            z-index: 30;
+          }
+
+          .deco2 {
+            width: 24%;
+            position: absolute;
+            top: 88px;
+            left: 64px;
+            z-index: 100;
+          }
+
+          .model {
+            width: 72%;
+            height: 100%;
+            margin-top: -20px;
+
+            .model-blur {
+              position: absolute;
+              right: 0;
+              width: 80%;
+              filter: blur(20px);
+              z-index: 10;
+            }
+
+            .model-container {
+              mask-image: url('../assets/svgs/created-nft-mask.svg');
+              mask-repeat: no-repeat;
+              mask-size: contain;
+              mask-position: center;
+              width: 100%;
+              height: 100%;
+              border-radius: 24px;
+              background-color: rgba(white, 0.4);
+              position: absolute;
+              z-index: 0;
+              right: -56px;
+              top: 8px;
+            }
+
+            .model-bbom {
+              position: absolute;
+              right: 0;
+              width: 80%;
+              z-index: 90;
+            }
+          }
+        }
+      }
+    }
+  }
+}
