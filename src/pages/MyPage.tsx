@@ -9,9 +9,11 @@ import Edit from "../assets/svgs/icon-edit.svg";
 import Deco2 from '../assets/svgs/icon-mypage-2.svg';
 import Back from '../assets/svgs/icon-back.svg';
 import BackWhite from '../assets/svgs/icon-back-white.svg';
+import {useNavigate} from "react-router-dom";
+import {ROUTES} from "../utils/ROUTES";
 
 const MyPage = () => {
-
+  const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement>(null);
   const [page, setPage] = useState(1);
   useEffect(() => {
@@ -35,18 +37,16 @@ const MyPage = () => {
       const pageWidth = scrollContainer.offsetWidth;
       const pageIndex = Math.round(scrollPosition / pageWidth);
       setPage(pageIndex + 1);
-      // const indicator = document.querySelector('.indicator');
-      // if (indicator) {
-      //   indicator.className = `indicator page-${pageIndex + 1}`;
-      // }
     }
   };
 
   return (
     <div className="scrollable-pages" ref={containerRef}>
       {page === 3 ?
-        <img className={'back'} src={Back} alt={''} /> :
-        <img className={'back'} src={BackWhite} alt={''} />
+        <img className={'back'} src={Back} alt={''}
+             onClick={() => navigate(ROUTES.HOME)}/> :
+        <img className={'back'} src={BackWhite} alt={''}
+             onClick={() => navigate(ROUTES.HOME)}/>
       }
       {page === 3 ?
         <img className={'logo'} src={LogoBlack} alt={''}/> :
@@ -100,7 +100,7 @@ const MyPage = () => {
                 </div>
               </div>
               <div className={'right'}>
-                <div className={'amount'}> 4.1kg </div>
+                <div className={'amount'}> 4.1kg</div>
               </div>
             </div>
             <div className={'receipt'}>
@@ -115,7 +115,7 @@ const MyPage = () => {
                 </div>
               </div>
               <div className={'right'}>
-                <div className={'amount'}> 4.1kg </div>
+                <div className={'amount'}> 4.1kg</div>
               </div>
             </div>
           </div>
@@ -125,22 +125,22 @@ const MyPage = () => {
       <div className="page">
         <div className={'third-page'}>
           <img className={'profile-img'} src={Bbom} alt={''}/>
-          <div className={'name'}> 유미 </div>
+          <div className={'name'}> 유미</div>
           <div className={'info'}>
             <div className={'info-row'}>
-              <div className={'label'}> 이메일 </div>
-              <div className={'value'}> yumi@studioliq.com </div>
+              <div className={'label'}> 이메일</div>
+              <div className={'value'}> yumi@studioliq.com</div>
             </div>
             <div className={'info-row'}>
-              <div className={'label'}> 전화번호 </div>
-              <div className={'value'}> oqo-6698-9508 </div>
+              <div className={'label'}> 전화번호</div>
+              <div className={'value'}> oqo-6698-9508</div>
             </div>
             <div className={'info-row'}>
-              <div className={'label'}> 가입일자 </div>
-              <div className={'value'}> 2023.06.29 </div>
+              <div className={'label'}> 가입일자</div>
+              <div className={'value'}> 2023.06.29</div>
             </div>
           </div>
-          <div className={'exit'}> 회원 탈퇴하기 </div>
+          <div className={'exit'}> 회원 탈퇴하기</div>
         </div>
       </div>
       <div className={'page-indicator'}>

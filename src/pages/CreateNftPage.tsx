@@ -5,16 +5,21 @@ import Gallery from '../assets/svgs/icon-gallery.svg';
 import Deco1 from '../assets/svgs/create-deco1.svg';
 import Deco2 from '../assets/svgs/create-deco2.svg';
 import Model from '../assets/pngs/model-dummy.png';
+import Back from "../assets/svgs/icon-back.svg";
+import React from "react";
+import {useNavigate} from "react-router-dom";
+import {ROUTES} from "../utils/ROUTES";
 
 const CreateNftPage = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <div className={'create'}>
+        <img className={'back'} src={Back} alt={''} onClick={() => navigate(ROUTES.HOME)}/> :
         <div className={'create-title'}>
           <div className={'title-create'}> create</div>
           <div className={'title-nft'}> NEW NFT</div>
         </div>
-
         <div className={'masked-div'}>
           <div className={'nft-container'}>
             <div className={'credit'}>

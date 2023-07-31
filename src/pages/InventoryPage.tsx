@@ -8,12 +8,16 @@ import PantsIcon from "../assets/PantsIcon";
 import SkirtIcon from "../assets/SkirtIcon";
 import TopIcon from "../assets/TopIcon";
 import HariIcon from "../assets/HairIcon";
+import {useNavigate} from "react-router-dom";
+import {ROUTES} from "../utils/ROUTES";
 
 const InventoryPage = () => {
+  const navigate = useNavigate();
   return (
     <div className={'inventory'}>
       <div className={'inventory-top'}>
-        <img className={'back'} src={Back} alt={''}/>
+        <img className={'back'} src={Back} alt={''}
+        onClick={() => navigate(ROUTES.HOME)}/>
         <div className={'bbom-name'}>
           <div className={'bbom-name-text'}> BBOM</div>
           <img className={'edit'} src={Edit} alt={''}/>
