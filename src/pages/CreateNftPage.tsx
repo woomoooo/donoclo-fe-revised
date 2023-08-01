@@ -20,12 +20,15 @@ const CreateNftPage = () => {
   const [previewURL, setPreviewURL] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [generatedImg, setGeneratedImg] = useState<string>('');
-  const [isMinting, setIsMinting] = useState(false);
+  const [isMinting, setIsMinting] = useState('before');
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       const selectedFile = event.target.files[0];
       setFile(selectedFile);
+      setGeneratedImg('');
+      setIsLoading(false);
+      setIsMinting('before')
       setPreviewURL(URL.createObjectURL(selectedFile));
     }
   };
@@ -51,7 +54,7 @@ const CreateNftPage = () => {
   }
 
   const mintNFT = async () => {
-    setIsMinting(true);
+    setIsMinting('minting');
     try{
       const body = { img: generatedImg };
       const token = localStorage.getItem("token");
@@ -62,7 +65,7 @@ const CreateNftPage = () => {
     } catch (error) {
       console.error("Error:", error);
     }
-    setIsLoading(false);
+    setIsMinting('complete');
   }
 
   const resetButton = () => {
@@ -70,6 +73,7 @@ const CreateNftPage = () => {
     setPreviewURL(null);
     setGeneratedImg('');
     setIsLoading(false);
+    setIsMinting('before')
   }
 
   return (
@@ -87,7 +91,6 @@ const CreateNftPage = () => {
               <div className={'credit-num'}> 12</div>
             </div>
             <div className={'upload-menu'}>
-              <img className={'camera'} src={Camera} alt={''}/>
               <label htmlFor="custom-input" className={'gallery-input'}>
                 <input type="file" onChange={handleFileChange} accept="image/*" id="custom-input" className={'custom-input'} />
                 <img src={Gallery} alt="Custom Icon" className={'custom-icon'} />
@@ -101,6 +104,7 @@ const CreateNftPage = () => {
                     alt="Preview"
                     style={{ width : '100%', height : '100%', borderRadius:'8px', objectFit:'cover'}}
                   />
+                  <button onClick={resetButton} className={'reset-button'}> reset </button>
                 </div>
               </> :<>
                 <div className={'upload'}>
@@ -122,12 +126,30 @@ const CreateNftPage = () => {
                     : <>
                       { generatedImg.length === 0 ? <>
                           {previewURL ? <><button onClick={generateDescription} className={'generate-button'}>Generate NFT</button></>
-                            : <></>}
+                            : <>
+                              <div className={'generated-message'}>Create NFT</div>
+                            </>}
                         </>
                         : <>
-                          <div className={'generated-message'}> Your NFT <br/> Generated !</div>
-                          <button onClick={mintNFT} className={'mint-button'}>Mint NFT</button>
-                        </>
+                        {isMinting === 'minting' ?<>
+                            <Hearts
+                              height="80"
+                              width="80"
+                              color="#ffffff"
+                              ariaLabel="hearts-loading"
+                              wrapperStyle={{}}
+                              wrapperClass=""
+                              visible={true}
+                            />
+                          </>
+                          :<>{isMinting === 'complete' ?<>
+                            <div className={'generated-message'}>NFT Minted!</div>
+                            </> : <>
+                            <div className={'generated-message'}>Your NFT<br/> Generated !</div>
+                            <button onClick={mintNFT} className={'mint-button'}>Mint NFT</button>
+                            </>}
+                          </>}
+                          </>
                       }
                     </>}
                 </div>
@@ -136,9 +158,17 @@ const CreateNftPage = () => {
                   <img className={'deco1'} src={Deco1} alt={''}/>
                   <img className={'deco2'} src={Deco2} alt={''}/>
                   <img className={'model-container'} src={Box}/>
-                  {generatedImg.length === 0 ? <></> : <><img className={'model-bbom'} src={generatedImg} alt={''}/></>}
+                  {generatedImg.length === 0 ? <></>
+                    :<>
+                      {generatedImg.includes('pants')
+                        ?<>
+                          <img className={'model-bbom-bottom'} src={generatedImg} alt={''}/>
+                        </>
+                        :<>
+                          <img className={'model-bbom'} src={generatedImg} alt={''}/>
+                        </>}
+                    </>}
                 </div>
-                <button onClick={resetButton} className={'reset-button'}> reset </button>
               </div>
             </div>
           </div>
