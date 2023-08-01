@@ -15,7 +15,7 @@ const BookPage = () => {
   const [postalCode, setPostalCode] = React.useState<string>('');
   const navigate = useNavigate();
   const [recentAddress, setRecentAddress] = useState<string>('');
-
+  const [recentDetailedAddress, setRecentDetailedAddress] = useState<string>('');
   const [showToast, setShowToast] = useState<boolean>(false);
 
   const handleToast = () => {
@@ -69,8 +69,9 @@ const BookPage = () => {
       try {
         const res = await requestRecentBook();
         if (res) {
-          const recent = res.address + res.detailedAddress;
-          setRecentAddress(recent);
+          setRecentAddress(res.address);
+          setRecentDetailedAddress(res.detailedAddress);
+          setPostalCode('0'.repeat(5 - res.postalCode.length) + res.postalCode);
         }
       } catch (e) {
         console.log(e);
@@ -80,13 +81,8 @@ const BookPage = () => {
   }, [])
 
   const onClickRecentBook = async () => {
-    const res = await requestRecentBook();
-    try {
-      await createBook(res.postalCode, res.address, res.detailedAddress);
-      handleToast();
-    } catch (e) {
-      console.log(e);
-    }
+    setAddress(recentAddress);
+    setAddressDetail(recentDetailedAddress);
   }
 
   return (
@@ -104,7 +100,7 @@ const BookPage = () => {
       <div className={'recent'}>
         <div className={'title'}> recently-used</div>
         <div className={'recent-address'}>
-          {recentAddress === '' ? '최근에 사용한 주소가 없습니다.' : recentAddress }
+          {recentAddress === '' ? '최근에 사용한 주소가 없습니다.' : recentAddress + recentDetailedAddress}
           <div className={'select-btn'} onClick={onClickRecentBook}> 선택</div>
         </div>
       </div>
@@ -115,11 +111,12 @@ const BookPage = () => {
         <div className={'postal-code'}> {postalCode}</div>
         <div className={'address'}> {address} </div>
         <input className={'detail-address'} placeholder={'상세주소를 입력해주세요.'}
+               defaultValue={addressDetail}
                onChange={(e: any) => {
                  setAddressDetail(e.target.value)
                }}/>
       </div>
-      <div className={'book-btn'} onClick={() => createBook(postalCode, address, addressDetail)}> BOOK </div>
+      <div className={'book-btn'} onClick={() => createBook(postalCode, address, addressDetail)}> BOOK</div>
       {isOpenPost ? (
         <div className={'address-selector'}
              onClick={() => setIsOpenPost(false)}>
@@ -128,7 +125,7 @@ const BookPage = () => {
       ) : null}
       {showToast ? (
         <div className={'toast'}>
-          <img className={'complete-icon'} src={Complete} alt={''} />
+          <img className={'complete-icon'} src={Complete} alt={''}/>
           예약이 완료되었습니다!
         </div>
       ) : null}

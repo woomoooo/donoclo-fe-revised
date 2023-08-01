@@ -3,12 +3,10 @@ import Logo from '../assets/svgs/icon-logo-black.svg';
 import NftBackground from '../assets/svgs/home-nft-bg.svg';
 import BookBackground from '../assets/svgs/home-book-bg.svg';
 import MyPage from '../assets/svgs/icon-mypage.svg';
-import Capture from '../assets/svgs/icon-capture.svg';
 import {ROUTES} from "../utils/ROUTES";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useRef, useState} from "react";
 import {requestAvatar} from "../apis/avatar";
-import html2canvas from "html2canvas";
 import {Background} from "../assets/backgrounds/Background";
 import Model from "../assets/models/Model";
 import {DefaultClothes} from "../assets/defaultClothes/defaultClothes";
@@ -41,42 +39,6 @@ const HomePage = () => {
     getAvatar();
   }, []);
 
-  const handleCaptureClick = async () => {
-    if (captureRef.current) {
-      const captureElement = captureRef.current;
-      const containerWidth = captureElement.offsetWidth; // 캡처할 영역의 너비
-      const containerHeight = captureElement.offsetHeight - 32; // 캡처할 영역의 높이
-
-      const captureOptions = {
-        scrollX: -window.scrollX,
-        scrollY: -window.scrollY,
-        useCORS: true,
-        width: containerWidth,
-        height: containerHeight,
-      };
-
-      try {
-        const canvas = await html2canvas(captureElement, captureOptions);
-
-        const excludedElement = captureElement.querySelector('.capture');
-        if (excludedElement) {
-          const excludedElementRect = excludedElement.getBoundingClientRect();
-          const {top, left, width, height} = excludedElementRect;
-          const context = canvas.getContext('2d');
-          if (context) {
-            context.clearRect(left, top, width, height);
-          }
-        }
-
-        const link = document.createElement('a');
-        link.href = canvas.toDataURL();
-        link.download = `${name}.png`;
-        link.click();
-      } catch (error) {
-        console.error('Failed to capture image:', error);
-      }
-    }
-  };
 
   return (
     <div className={'home'}>
@@ -90,13 +52,9 @@ const HomePage = () => {
            onClick={() => navigate(ROUTES.INVENTORY)}>
         <img className="bbom-background" src={Background({index: background})} alt=""/>
         <img className="bbom" src={Model({color: model})} alt=""/>
-        {defaultCloth>-1 ? (<img className="bbom-default" src={DefaultClothes({index: defaultCloth})} alt=""/>) : null}
-        {bottom.length > 0 ? ( <img className="bbom" src={bottom} alt=""/>) : null}
-        {top.length > 0 ? ( <img className="bbom" src={top} alt=""/>) : null}
-      </div>
-      <div className={'capture'}
-           onClick={handleCaptureClick}>
-        <img className={'capture-icon'} src={Capture} alt={''}/>
+        {defaultCloth>-1 && <img className="bbom-default" src={DefaultClothes({index: defaultCloth})} alt=""/>}
+        {bottom.length > 0 && <img className="bbom-bottom" src={bottom} alt=""/>}
+        {top.length > 0 && <img className="bbom-top" src={top} alt=""/>}
       </div>
       <div className={'home-menu'}>
         <div className={'menu-card'}

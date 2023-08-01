@@ -9,6 +9,7 @@ interface User {
   accessToken: string;
   status: number;
   token: number;
+  wallet_address: string;
 }
 
 export const requestSignup = async (body: User) => {

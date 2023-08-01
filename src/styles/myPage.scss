@@ -45,34 +45,71 @@
       position: relative;
       padding-top: 120px;
 
-      .bbom-container {
-        width: calc(100vw - 36px);
-        height: calc(100vw - 36px);
+
+      .home-bbom {
+        box-sizing: border-box;
+        width: calc(100vw - 40px);
+        height: calc(100vw);
+        background-color: #131BDE;
+        background-repeat: no-repeat;
+        margin-top: 12px;
         position: relative;
-        .bbom {
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        z-index: 0;
+
+        .bbom-background {
+          position: absolute;
           width: 100%;
           height: 100%;
+          left: 0;
+          top: 0;
+          object-fit: cover;
+          z-index: 10;
+        }
+
+        .bbom {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
           z-index: 30;
         }
 
-        .credit {
+        .bbom-default {
           position: absolute;
-          top: 20px;
-          right: 20px;
-          color: white;
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-
-          .credit-icon {
-            width: 24px;
-          }
-          .credit-num {
-            font-size: 18px;
-            font-family: "Cafe24Ssurround";
-          }
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          z-index: 40;
         }
+
+        .bbom-top {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          z-index: 40;
+        }
+
+        .bbom-bottom {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          z-index: 40;
+        }
+
       }
+
       .deco-vector {
         margin: 12px 0;
       }
@@ -245,6 +282,13 @@
         justify-content: space-between;
         font-size: 14px;
         font-family: "Cafe24 Ohsquare air OTF";
+
+        .value.address {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+        }
       }
     }
     .exit {
@@ -253,6 +297,27 @@
       font-size: 14px;
       color: #FF3E78;
       font-family: "Cafe24 Ohsquare air OTF";
+    }
+
+    .toast {
+      position: absolute;
+      bottom: 160px;
+      width: 60%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #f5f5f5;
+      padding: 4px 8px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 14px;
+      border-radius: 12px;
+      .complete-icon {
+        width: 28px;
+        height: 28px;
+      }
     }
   }
 

@@ -28,39 +28,58 @@
   }
 
   .home-bbom {
-    box-sizing: border-box;
-    width: calc(100vw - 40px);
-    height: calc(100vw + 40px);
-    background-color: #131BDE;
-    background-repeat: no-repeat;
-    margin-top: 12px;
-    position: relative;
-    mask-image: url('../assets/svgs/home-mask.svg');
-    mask-size: contain;
-    mask-repeat: no-repeat;
+      box-sizing: border-box;
+      width: calc(100vw - 40px);
+      height: calc(100vw + 40px);
+      background-color: #131BDE;
+      background-repeat: no-repeat;
+      margin-top: 12px;
+      position: relative;
+      mask-image: url('../assets/svgs/home-mask.svg');
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      z-index: 0;
 
-    .bbom-background {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 10;
-    }
+      .bbom-background {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 10;
+      }
 
-    .bbom {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 30;
-    }
-    .bbom-default {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 40;
-    }
+      .bbom {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 30;
+      }
+
+      .bbom-default {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 40;
+      }
+
+      .bbom-top {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 40;
+      }
+
+      .bbom-bottom {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 40;
+      }
+
   }
 
   .capture {
