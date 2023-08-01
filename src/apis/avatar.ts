@@ -8,8 +8,8 @@ export interface Avatar {
   userId: number;
   background: number;
   hair: number;
-  top: number;
-  bottom: number;
+  top: string;
+  bottom: string;
   one_piece: number;
 }
 
@@ -27,8 +27,8 @@ export const requestAvatarUpdate = async (body: {
   name: string;
   background: number;
   hair: number;
-  top: number;
-  bottom: number;
+  top: string;
+  bottom: string;
   one_piece: number;
 }): Promise<Avatar> => {
   const token = localStorage.getItem("token");

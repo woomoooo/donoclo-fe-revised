@@ -11,14 +11,15 @@ import {requestAvatar} from "../apis/avatar";
 import html2canvas from "html2canvas";
 import {Background} from "../assets/backgrounds/Background";
 import Model from "../assets/models/Model";
+import {DefaultClothes} from "../assets/defaultClothes/defaultClothes";
 
 const HomePage = () => {
   const navigate = useNavigate();
   const [background, setBackground] = useState(0);
   const [model, setModel] = useState(0);
-  const [top, setTop] = useState(0);
-  const [bottom, setBottom] = useState(0);
-  const [one_piece, setOnePiece] = useState(0);
+  const [top, setTop] = useState('');
+  const [bottom, setBottom] = useState('');
+  const [defaultCloth, setDefaultCloth] = useState(-1);
   const [name, setName] = useState('');
   const captureRef = useRef<HTMLDivElement>(null);
 
@@ -32,7 +33,7 @@ const HomePage = () => {
         setName(avatar.name);
         setTop(avatar.top);
         setBottom(avatar.bottom);
-        setOnePiece(avatar.one_piece);
+        setDefaultCloth(avatar.one_piece);
       } catch (e) {
         console.log(e);
       }
@@ -85,12 +86,16 @@ const HomePage = () => {
              onClick={() => navigate(ROUTES.MY_PAGE)}/>
       </div>
 
-      <div className={'home-bbom'}
+      <div className={'home-bbom'} ref={captureRef}
            onClick={() => navigate(ROUTES.INVENTORY)}>
         <img className="bbom-background" src={Background({index: background})} alt=""/>
         <img className="bbom" src={Model({color: model})} alt=""/>
+        {defaultCloth>-1 ? (<img className="bbom-default" src={DefaultClothes({index: defaultCloth})} alt=""/>) : null}
+        {bottom.length > 0 ? ( <img className="bbom" src={bottom} alt=""/>) : null}
+        {top.length > 0 ? ( <img className="bbom" src={top} alt=""/>) : null}
       </div>
-      <div className={'capture'} onClick={handleCaptureClick}>
+      <div className={'capture'}
+           onClick={handleCaptureClick}>
         <img className={'capture-icon'} src={Capture} alt={''}/>
       </div>
       <div className={'home-menu'}>

@@ -52,7 +52,9 @@
         .bbom {
           width: 100%;
           height: 100%;
+          z-index: 30;
         }
+
         .credit {
           position: absolute;
           top: 20px;

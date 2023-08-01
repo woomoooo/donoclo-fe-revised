@@ -41,7 +41,6 @@
     margin-top: -60px;
     mask-image: url('../assets/svgs/create-mask.svg');
     mask-repeat: no-repeat;
-    //mask-position: center;
     mask-size: cover;
     background-color: black;
     position: relative;
@@ -83,6 +82,19 @@
         flex-direction: row;
         align-items: center;
         padding-left: 12px;
+        label {
+          display: block; /* 블록 레벨 요소로 변경합니다. */
+          height: 32px; /* 높이를 32px로 지정합니다. */
+        }
+        .custom-input {
+          display: none; /* 숨겨진 input 요소를 감춥니다. */
+        }
+
+        .custom-icon {
+          width: 32px; /* 아이콘 이미지의 크기를 지정합니다. */
+          height: 32px;
+          cursor: pointer;
+        }
       }
 
       .upload-container {
@@ -96,8 +108,8 @@
         gap: 16px;
 
         .upload {
-          width: calc(100vw - 80px);
-          height: calc(100vw - 80px);
+          width: calc(100vw - 100px);
+          height: calc(100vw - 100px);
           margin-top: 24px;
           border-radius: 8px;
           background-color: white;
@@ -111,37 +123,69 @@
 
         .after-uploaded {
           width: 100%;
-          height: calc(100vw - 40px);
           aspect-ratio: 1/1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
           position: relative;
           overflow: hidden;
 
-          .generated-message {
-            color: white;
-            font-family: 'Zen Dots', cursive;
-            margin-left: 20px;
-          }
-
-          .deco1 {
-            position: absolute;
+          .after-uploaded-status{
+            height: 40px;
             width: 100%;
-            bottom: -40px;
-            left: -40px;
-            z-index: 30;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            //background-color: pink;
+            .generate-button{
+              background-color: white;
+              height:40px;
+              padding: 0 16px;
+              border-radius: 20px;
+              color: #131BDE;
+              border: none;
+            }
+            .generated-message {
+              color: white;
+              font-family: 'Zen Dots', cursive;
+              text-align: center;
+            }
+            .mint-button {
+              margin-left: 20px;
+              border-radius: 20px;
+              padding:8px 12px;
+              border: solid 1px white;
+              background-color: black;
+              color: white;
+              font-family: 'Zen Dots', cursive;
+              text-align: center;
+            }
           }
 
-          .deco2 {
-            width: 24%;
-            position: absolute;
-            top: 88px;
-            left: 64px;
-            z-index: 100;
-          }
 
           .model {
-            width: 72%;
-            height: 100%;
-            margin-top: -20px;
+            width: 100%;
+            //background-color: #131BDE;
+            display: flex;
+            justify-content: center;
+
+            .deco1 {
+              position: absolute;
+              //background-color: blue;
+              left:-10px;
+              object-fit: cover;
+              bottom: 30px;
+              z-index: 100;
+            }
+
+            .deco2 {
+              width: 24%;
+              position: absolute;
+              top: 60px;
+              right: 16px;
+              z-index: 100;
+              cursor: pointer;
+            }
 
             .model-blur {
               position: absolute;
@@ -152,26 +196,29 @@
             }
 
             .model-container {
-              mask-image: url('../assets/svgs/created-nft-mask.svg');
-              mask-repeat: no-repeat;
-              mask-size: contain;
-              mask-position: center;
-              width: 100%;
-              height: 100%;
-              border-radius: 24px;
-              background-color: rgba(white, 0.4);
-              position: absolute;
+              width: 280px;
+              height: 280px;
+              //background-color: rgba(white, 0.4);
+              display: flex;
+              justify-content: center;
+              align-items: center;
               z-index: 0;
-              right: -56px;
-              top: 8px;
             }
 
             .model-bbom {
               position: absolute;
-              right: 0;
-              width: 80%;
+              height: 240px;
+              width: 240px;
+              object-fit: cover;
               z-index: 90;
             }
+          }
+
+          .reset-button{
+
+            background-color: black;
+            color: lightgray;
+            border-width: 0;
           }
         }
       }
