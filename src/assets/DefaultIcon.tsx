@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import svg from "./svgs/icon-skirt.svg";
+import svg from "./svgs/icon-default.svg";
 import { ReactSVG } from "react-svg";
 
-function SkirtIcon(props: any) {
+function DefaultIcon(props: any) {
   const { src = svg, size = [], fill = "", ...rest } = props;
   const width = size[0] || "";
   const height = size.length === 2 ? size[1] || width : "";
@@ -18,6 +18,9 @@ function SkirtIcon(props: any) {
           > path {
             fill: ${fill};
           }
+          > g > path {
+            fill: ${fill};
+          }
         }
       `}
       src={src}
@@ -25,4 +28,4 @@ function SkirtIcon(props: any) {
   );
 }
 
-export default SkirtIcon;
+export default DefaultIcon;

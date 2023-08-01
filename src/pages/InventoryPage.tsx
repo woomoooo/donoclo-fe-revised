@@ -4,12 +4,12 @@ import Edit from '../assets/svgs/icon-edit.svg';
 import Capture from "../assets/svgs/icon-capture.svg";
 import BackgroundIcon from "../assets/BackgroundIcon";
 import PantsIcon from "../assets/PantsIcon";
-import SkirtIcon from "../assets/SkirtIcon";
+import DefaultIcon from "../assets/DefaultIcon";
 import TopIcon from "../assets/TopIcon";
 import HariIcon from "../assets/HairIcon";
 import {useNavigate} from "react-router-dom";
 import {ROUTES} from "../utils/ROUTES";
-import {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import html2canvas from 'html2canvas';
 import {requestAvatar, requestAvatarUpdate} from "../apis/avatar";
 import Complete from '../assets/svgs/icon-complete.svg';
@@ -220,7 +220,7 @@ const InventoryPage = () => {
         </div>
         <div className={`filter-icon ${selectedFilter === 'defaultClothes' && 'selected'}`}
              onClick={() => handleFilterClick('defaultClothes')}>
-          <SkirtIcon fill={selectedFilter === 'defaultClothes' ? 'black' : '#dcdcdc'}/>
+          <DefaultIcon fill={selectedFilter === 'defaultClothes' ? 'black' : '#dcdcdc'}/>
         </div>
       </div>
       {showToast ? (
@@ -257,6 +257,7 @@ const InventoryPage = () => {
         <div className={'clothes-picker'}>
           {isTopLoading ? <>
               {/* eslint-disable-next-line react/jsx-no-undef */}
+            <div className={'loading-container'}>
               <Hearts
                 height="80"
                 width="80"
@@ -266,6 +267,7 @@ const InventoryPage = () => {
                 wrapperClass=""
                 visible={true}
               />
+            </div>
             </>
             : <>
               {topList.map((top, index) => (
@@ -278,6 +280,7 @@ const InventoryPage = () => {
       {selectedFilter === 'bottom' ? (
         <div className={'clothes-picker'}>
           {isBottomLoading ? <>
+            <div className={'loading-container'}>
               <Hearts
                 height="80"
                 width="80"
@@ -287,6 +290,7 @@ const InventoryPage = () => {
                 wrapperClass=""
                 visible={true}
               />
+            </div>
             </>
             : <>
               {bottomList.map((bottom, index) => (

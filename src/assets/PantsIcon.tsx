@@ -15,7 +15,10 @@ function PantsIcon(props: any) {
         & > div > svg {
           width: calc(${width}px);
           height: calc(${height}px);
-          > path {
+          > mask {
+            fill: ${fill};
+          }
+          > g > path {
             fill: ${fill};
           }
         }
