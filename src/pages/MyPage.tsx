@@ -11,13 +11,18 @@ import Back from '../assets/svgs/icon-back.svg';
 import BackWhite from '../assets/svgs/icon-back-white.svg';
 import {useNavigate} from "react-router-dom";
 import {ROUTES} from "../utils/ROUTES";
-
+import {requestAvatar, requestAvatarUpdate} from "../apis/avatar";
+import {requestUserInfo} from "../apis/auth";
+import Complete from '../assets/svgs/icon-complete.svg';
 const MyPage = () => {
   const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement>(null);
   const [page, setPage] = useState(1);
+  const [avatar, setAvatar] = useState<any>({});
+  const [user, setUser] = useState<any>({});
+  const [isAvatarNameEditMode, setIsAvatarNameEditMode] = useState(false);
+  const [name, setName] = useState('');
   useEffect(() => {
-    // 스크롤 스냅 기능을 위한 설정
     const scrollContainer = containerRef.current;
     if (scrollContainer) {
       scrollContainer.addEventListener('scroll', handleScroll);
@@ -29,6 +34,46 @@ const MyPage = () => {
       }
     };
   }, []);
+
+  useEffect(() => {
+    const getAvatar = async () => {
+      try {
+        const avatar = await requestAvatar();
+        setAvatar(avatar);
+        setName(avatar.name);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    getAvatar();
+  }, [avatar]);
+
+  useEffect(() => {
+    const getUserInfo = async () => {
+      try {
+        const user = await requestUserInfo();
+        setUser(user);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    getUserInfo();
+  }, [user]);
+
+  const handleUpdateAvatar = async () => {
+    try {
+      await requestAvatarUpdate({
+        name: name,
+        background: avatar.background,
+        hair: avatar.model,
+        top: avatar.top,
+        bottom: avatar.bottom,
+        one_piece: avatar.one_piece,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   const handleScroll = () => {
     const scrollContainer = containerRef.current;
@@ -43,10 +88,8 @@ const MyPage = () => {
   return (
     <div className="scrollable-pages" ref={containerRef}>
       {page === 3 ?
-        <img className={'back'} src={Back} alt={''}
-             onClick={() => navigate(ROUTES.HOME)}/> :
-        <img className={'back'} src={BackWhite} alt={''}
-             onClick={() => navigate(ROUTES.HOME)}/>
+        <img className={'back'} src={Back} alt={''} onClick={() => navigate(ROUTES.HOME)}/> :
+        <img className={'back'} src={BackWhite} alt={''} onClick={() => navigate(ROUTES.HOME)}/>
       }
       {page === 3 ?
         <img className={'logo'} src={LogoBlack} alt={''}/> :
@@ -64,10 +107,21 @@ const MyPage = () => {
           <img className={'deco-vector'} src={Deco1} alt={''}/>
           <div className={'info'}>
             <div className={'label'}> 이름</div>
-            <div className={'name'}>
-              BBOMI
-              <img className={'edit'} src={Edit} alt={''}/>
-            </div>
+            {isAvatarNameEditMode ? (
+              <div className={'bbom-name-edit'}>
+                <input className="bbom-name-input" value={name} onChange={(e) => {
+                  setName(e.target.value)}
+                }/>
+                <img className={'complete'} src={Complete} alt={''} onClick={() => {
+                  setIsAvatarNameEditMode(false)
+                }}/>
+              </div>
+            ) : (
+              <div className={'name'}>
+                {avatar.name}
+                <img className={'edit'} src={Edit} alt={''} onClick={() => setIsAvatarNameEditMode(true)}/>
+              </div>
+            )}
           </div>
           <div className={'info'}>
             <div className={'label'}> 생일</div>
@@ -83,10 +137,9 @@ const MyPage = () => {
             <div className={'text1'}> total amount of</div>
             <div className={'text2'}> 12.9kg</div>
             <div className={'text3'}>
-              여기에 뭐 좀 쓸거 있었으면 좋겠따 <br/>
-              절약한 탄소 양?<br/>
-              면적으로 하면 얼마나 나올지?<br/>
-              뭐 그렇게 보여줄 수 있는거였음 좋겠는디ㅔㅇ
+              지금까지 이 정도의 헌 옷을 기부했어요. <br/>
+              앞으로도 도노클로와 함께 <br/>
+              헌옷 기부에 참여하고 탄소 배출을 줄여봐요!
             </div>
             <div className={'receipt'}>
               <div className={'left'}>
@@ -149,7 +202,6 @@ const MyPage = () => {
 
     </div>
   );
-
 };
 
 
