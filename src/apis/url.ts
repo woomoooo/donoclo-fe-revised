@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:4200';
+const API_URL = 'https://be-donoclo.studioliq.com';
 
 export const SIGN_UP = `${API_URL}/user/signup/`;
 export const SIGN_IN = `${API_URL}/user/signin/`;

@@ -10,7 +10,7 @@ import Back from '../assets/svgs/icon-back.svg';
 import BackWhite from '../assets/svgs/icon-back-white.svg';
 import {useNavigate} from "react-router-dom";
 import {ROUTES} from "../utils/ROUTES";
-import {requestAvatar, requestAvatarUpdate} from "../apis/avatar";
+import {requestAvatar } from "../apis/avatar";
 import {requestUserInfo} from "../apis/auth";
 import Copy from '../assets/svgs/icon-copy.svg';
 import {Background} from "../assets/backgrounds/Background";
